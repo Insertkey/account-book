@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>添加账单</h2>
+<mat-dialog-content>
+  <form>
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>时间</mat-label>
+      <input matInput [matDatepicker]="picker" [formControl]="time" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker
+        #picker
+        startView="month"
+      ></mat-datepicker>
+      <mat-error *ngIf="time.invalid">
+        请选择正确的时间
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>账单类型</mat-label>
+      <mat-select [formControl]="category">
+        <mat-option *ngFor="let category of data.categoryList" [value]="category.id">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="category.hasError('required')">
+       请选择账单类型
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>账单金额</mat-label>
+      <input type="email" matInput [formControl]="amount" placeholder="请输入账单金额">
+      <mat-error *ngIf="amount.hasError('required')">
+        请输入账单金额
+      </mat-error>
+      <mat-error *ngIf="amount.hasError('pattern')">
+        请输入正确的账单金额
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <div style="height: 20px"></div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">取消</button>
+  <button mat-button (click)="confirm()" color="primary">确定</button>
+</mat-dialog-actions>
