@@ -83,7 +83,8 @@ export class AccountBookComponent implements OnInit, AfterViewInit {
   }
 
   handleAddSuccess(e: Bill): void {
-    this.dataSource.data = [...this.dataSource.data, e];
+    this.rawBillList = [...this.rawBillList, e];
+    this.filterBillList();
   }
 
   handleFilterConditionChange(e: FilterCondition): void {

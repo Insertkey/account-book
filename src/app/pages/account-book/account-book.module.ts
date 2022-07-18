@@ -27,6 +27,7 @@ import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
   MomentDateAdapter,
 } from '@angular/material-moment-adapter';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const DATE_FORMATS = {
   parse: {
@@ -63,6 +64,7 @@ const DATE_FORMATS = {
     MatButtonModule,
     MatDialogModule,
     MatRadioModule,
+    MatSnackBarModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'zh-CN' },

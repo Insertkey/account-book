@@ -25,7 +25,10 @@ const DATE_FORMATS = {
 })
 export class AddBillDialogComponent implements OnInit {
   category = new FormControl('', Validators.required);
-  amount = new FormControl('', [Validators.required,Validators.pattern(/-?(0|[1-9]\d*)(\.\d+)?/)]);
+  amount = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/-?(0|[1-9]\d*)(\.\d+)?/),
+  ]);
   time = new FormControl(moment(), Validators.required);
 
   constructor(
@@ -43,7 +46,7 @@ export class AddBillDialogComponent implements OnInit {
           (item) => item.id === this.category.value
         )!.type,
         amount: this.amount.value!,
-        time: this.time.value!.toString(),
+        time: this.time.value!.valueOf().toString(),
       });
     }
   }
