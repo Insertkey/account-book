@@ -17,7 +17,6 @@ import {
   merge,
   of,
 } from 'rxjs';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { FilterCondition } from './filter-conditon/filter-condition.component';
 import * as moment from 'moment';
@@ -38,7 +37,6 @@ export class AccountBookComponent implements OnInit, AfterViewInit {
   displayedColumns: Array<keyof Bill> = ['category', 'type', 'time', 'amount'];
   filterCondition: FilterCondition | undefined;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   get showTotal() {
@@ -81,7 +79,6 @@ export class AccountBookComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 

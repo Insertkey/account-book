@@ -45,7 +45,7 @@
 
       <ng-container matColumnDef="total">
         <td mat-footer-cell *matFooterCellDef colspan="4" class="total">
-          <div>收入：{{ totalIncome }}￥，支出{{ totalExpend }}￥</div>
+          <div>收入：{{ totalIncome }}￥，支出：{{ totalExpend }}￥</div>
         </td>
       </ng-container>
 
@@ -53,10 +53,5 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       <tr mat-footer-row *matFooterRowDef="showTotal ? ['total'] : []"></tr>
     </table>
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 20]"
-      [pageSize]="10"
-      showFirstLastButtons
-    ></mat-paginator>
   </div>
 </div>
